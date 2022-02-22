@@ -1,26 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   malloc.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/22 14:34:21 by kevyn             #+#    #+#             */
+/*   Updated: 2022/02/22 14:35:54 by kevyn            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/pipex.h"
-
-void	malloc_file(int argc, char **argv, s_list *s)
-{
-	int i;
-
-	i = 0;
-	s->stock1 = malloc(sizeof(char) * ft_strlen(argv[1]) + 1);
-	s->stock2 = malloc(sizeof(char) * ft_strlen(argv[argc - 1]) + 1);
-	while (argv[1][i])
-	{
-		s->stock1[i] = argv[1][i];
-		i++;
-	}
-	s->stock1[i] = '\0';
-	i = 0;
-	while (argv[argc - 1][i])
-	{
-		s->stock2[i] = argv[argc - 1][i];
-		i++;
-	}
-	s->stock2[i] = '\0';
-}
 
 char	**path_finish(char **env)
 {
@@ -28,7 +18,7 @@ char	**path_finish(char **env)
 	char	*tmp;
 
 	i = -1;
-	while(env[++i])
+	while (env[++i])
 	{
 		tmp = ft_strjoin(env[i], "/");
 		free(env[i]);
@@ -40,10 +30,10 @@ char	**path_finish(char **env)
 
 char	**path_fct(char **env)
 {
-	int i;
-	int y;
-	char *str;
-	char **spli;
+	int		i;
+	int		y;
+	char	*str;
+	char	**spli;
 
 	i = 0;
 	y = 0;
@@ -53,16 +43,16 @@ char	**path_fct(char **env)
 			break ;
 		i++;
 	}
-	while(env[i][y] != '=')
-		env[i][y++];
+	while (env[i][y] != '=')
+		y++;
 	str = env[i] + y + 1;
 	spli = ft_split(str, ':');
 	return (path_finish(spli));
 }
 
-int verif_file(int argc, char **argv)
+int	verif_file(int argc, char **argv)
 {
-	int fd;
+	int	fd;
 
 	if (argc != 5)
 		return (1);
@@ -73,10 +63,10 @@ int verif_file(int argc, char **argv)
 	return (0);
 }
 
-int verif_exist(char **path, char *argv)
+int	verif_exist(char **path, char *argv)
 {
-	int i;
-	int x;
+	int	i;
+	int	x;
 
 	i = -1;
 	x = 1;
@@ -85,7 +75,7 @@ int verif_exist(char **path, char *argv)
 		path[i] = ft_strjoin(path[i], argv);
 		x = access(path[i], R_OK);
 		if (x == 0)
-			return(i);
+			return (i);
 	}
 	return (-1);
 }

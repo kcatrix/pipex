@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/22 14:33:10 by kevyn             #+#    #+#             */
+/*   Updated: 2022/02/22 14:44:38 by kevyn            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/pipex.h"
 
-int main(int argc, char **argv, char **env)
+int	main(int argc, char **argv, char **env)
 {
-	int i;
-	
+	int	i;
+
 	i = pipex(argc, argv, env);
 	if (i != 0)
-		Get_error(i);
+		get_error(i);
 	return (0);
 }
