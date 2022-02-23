@@ -7,6 +7,13 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int pipex(int argc);
+typedef struct	t_list{
+	char *stock1;
+	char *stock2;
+}				s_list;
+
+int		pipex(int argc, char **argv);
+char	Get_error(int i);
+void	malloc_file(int argc, char **argv, s_list *s);
 
 #endif
