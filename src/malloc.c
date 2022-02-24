@@ -7,7 +7,6 @@ void	malloc_file(int argc, char **argv, s_list *s)
 	i = 0;
 	s->stock1 = malloc(sizeof(char) * ft_strlen(argv[1]) + 1);
 	s->stock2 = malloc(sizeof(char) * ft_strlen(argv[argc - 1]) + 1);
-	
 	while (argv[1][i])
 	{
 		s->stock1[i] = argv[1][i];
