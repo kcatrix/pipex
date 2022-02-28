@@ -28,4 +28,7 @@ fclean: clean
 
 re: fclean all
 
+lauch: re
+	@./pipex
+
 .PHONY: all clean fclean re

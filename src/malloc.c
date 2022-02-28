@@ -21,3 +21,41 @@ void	malloc_file(int argc, char **argv, s_list *s)
 	}
 	s->stock2[i] = '\0';
 }
+
+char	**path_finish(char **env)
+{
+	int		i;
+	char	*tmp;
+
+	i = -1;
+	while(env[++i])
+	{
+		tmp = ft_strjoin(env[i], "/");
+		free(env[i]);
+		env[i] = ft_strdup(tmp);
+		free(tmp);
+	}
+	return (env);
+}
+
+char	**path_fct(char **env)
+{
+	int i;
+	int y;
+	char *str;
+	char **spli;
+
+	i = 0;
+	y = 0;
+	while (env[i])
+	{
+		if (memcmp(env[i], "PATH", 4) == 0)
+			break ;
+		i++;
+	}
+	while(env[i][y] != '=')
+		env[i][y++];
+	str = env[i] + y + 1;
+	spli = ft_split(str, ':');
+	return (path_finish(spli));
+}
