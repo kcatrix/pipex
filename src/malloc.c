@@ -49,7 +49,7 @@ char	**path_fct(char **env)
 	y = 0;
 	while (env[i])
 	{
-		if (memcmp(env[i], "PATH", 4) == 0)
+		if (ft_memcmp(env[i], "PATH", 4) == 0)
 			break ;
 		i++;
 	}
@@ -58,4 +58,34 @@ char	**path_fct(char **env)
 	str = env[i] + y + 1;
 	spli = ft_split(str, ':');
 	return (path_finish(spli));
+}
+
+int verif_file(int argc, char **argv)
+{
+	int fd;
+
+	if (argc != 5)
+		return (1);
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		return (2);
+	close(fd);
+	return (0);
+}
+
+int verif_exist(char **path, char *argv)
+{
+	int i;
+	int x;
+
+	i = -1;
+	x = 1;
+	while (path[++i])
+	{
+		path[i] = ft_strjoin(path[i], argv);
+		x = access(path[i], R_OK);
+		if (x == 0)
+			return(i);
+	}
+	return (-1);
 }

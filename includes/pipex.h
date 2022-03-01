@@ -16,6 +16,8 @@ typedef struct	t_list{
 int		pipex(int argc, char **argv, char **env);
 char	Get_error(int i);
 char	**path_fct(char **env);
+int		verif_file(int argc ,char **argv);
+int 	verif_exist(char **path, char *argv);
 void	malloc_file(int argc, char **argv, s_list *s);
 
 #endif
