@@ -19,5 +19,6 @@ char	**path_fct(char **env);
 int		verif_file(int argc ,char **argv);
 int 	verif_exist(char **path, char *argv);
 void	malloc_file(int argc, char **argv, s_list *s);
+int		child_process(char **argv, char **path, char **env, int *fd);
 
 #endif
