@@ -37,11 +37,9 @@ int pipex(int argc, char **argv, char **env)
 		close(fd[0]);
 		close(fd[1]);
 		close(file);
-		printf("%s\n", spli[0]);
-		printf("%s\n", spli[1]);
-		printf("%s\n", path[0]);
-		printf("%s\n", path[1]);
 		execve(path[i], spli, env);
 	}
+	close(fd[0]);
+	close(fd[1]);
 	return (0);
 }
